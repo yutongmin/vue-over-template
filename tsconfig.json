@@ -1,25 +1,36 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
+    "target": "ESNext", // 将代码编译为最新版本的 JS
+    // "target": "ES2020",
+    "useDefineForClassFields": true, // 使用 Object.defineProperty 定义 class 中的属性，而非使用 obj.key = value 的形式定义属性
+    "module": "ESNext", // 使用 ES Module 格式打包编译后的文件
+    // "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["ESNext", "DOM"], // 引入 ES 最新特性和 DOM 接口的类型定义
+    "skipLibCheck": true, //是否跳过node_modules检查
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
+    "resolveJsonModule": true, // 允许引入 JSON 文件
+    "isolatedModules": true, // 该属性要求所有文件都是 ES Module 模块。
     "noEmit": true,
-    "jsx": "preserve",
+    "jsx": "preserve", // 保留原始的 JSX 代码，不进行编译
 
     /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
+    "strict": true, // 启用所用严格的类型检查
+    "noUnusedLocals": false, // false为不去校验未使用的变量
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+
+    "baseUrl": "./", 
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "types": ["vite/client"],
+    "moduleResolution": "Node",// 使用 Node 的模块解析策略
+    "sourceMap": true, // 生成 sourceMap 文件
+    "esModuleInterop": true,// 允许使用 import 引入使用 export = 导出的内容
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue","src/types/*.ts","config/**/*.ts", "global.d.ts", "config/config.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
