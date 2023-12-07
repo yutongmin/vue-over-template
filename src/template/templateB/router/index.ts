@@ -4,9 +4,9 @@ import Home from '@/template/templateB/views/Home.vue';
 import Index from '@/template/templateB/views/Index.vue';
 
 const routes: Array<RouteRecordRaw> = [
-  { path: '/loginB', component: Login },
-  { path: '/homeB', component: Home },
-  { path: '/indexB', component: Index },
+  { path: '/templateB/login', component: Login },
+  { path: '/templateB/home', component: Home },
+  { path: '/templateB/index', component: Index },
   // 更多模板 A 的路由...
 ];
 export default routes

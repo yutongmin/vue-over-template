@@ -7,6 +7,7 @@
  */
 import { remindType } from "@/utils/common/remindType";
 import { remindMessage } from "@/utils/common/message";
+import { ElNotification } from "element-plus/es/components";
 
 const errorMsg = (type: remindType, msg?: string) => {
   ElNotification({

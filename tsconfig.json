@@ -18,7 +18,7 @@
     /* Linting */
     "strict": true, // 启用所用严格的类型检查
     "noUnusedLocals": false, // false为不去校验未使用的变量
-    "noUnusedParameters": true,
+    "noUnusedParameters": false, // false为不去校验未使用的变量
     "noFallthroughCasesInSwitch": true,
 
 

@@ -1,31 +1,29 @@
-/*
- * sm2加密工具类
- * @Author: wuyefan
- * @Date: 2022-10-19 10:58:43
- * @Last Modified by: wuyefan
- * @Last Modified time: 2022-10-20 14:34:11
- */
+import { sm2 } from 'sm-crypto';
 
-import sm from "sm-crypto";
+// 从环境变量或配置文件中获取公钥和私钥
+const publicKey = '0495f30a0752abe637302c243c91d854ae1c5acce7c03698024c60288c3b4a071cd32f67386c948c671f399c7db0c6875c16b603ed24df2ce08ea5ad50a3246e46';
+const privateKey = 'process.env.PRIVATE_KEY';
 
 /**
- * sm2加密
+ * 使用 SM2 算法进行加密
+ * @param plaintext 明文
  */
-const sm2Encrpt = (password: string) => {
-  let publicKey =
-    "0495f30a0752abe637302c243c91d854ae1c5acce7c03698024c60288c3b4a071cd32f67386c948c671f399c7db0c6875c16b603ed24df2ce08ea5ad50a3246e46";
-
-  let passWord = sm.sm2Encrpt(password, publicKey);
-  console.log(passWord);
-  return passWord;
-};
-
-function SM2Cipher(a) {
-  this.ct = 1;
-  this.sm3c3 = this.sm3keybase = this.p2 = null;
-  this.key = Array(32);
-  this.keyOff = 0;
-  this.cipherMode = "undefined" != typeof a ? a : 1;
+async function encrypt(plaintext: string): Promise<string> {
+  const keyPair = await sm2.generateKeyPairHex(); // 生成临时密钥对
+  const ciphertext = sm2.doEncrypt(publicKey, plaintext); // 使用公钥加密
+  return ciphertext;
 }
 
-export { sm2Encrpt };
+/**
+ * 使用 SM2 算法进行解密
+ * @param ciphertext 密文
+ */
+async function decrypt(ciphertext: string): Promise<string> {
+  const decryptedText = sm2.doDecrypt(privateKey, ciphertext); // 使用私钥解密
+  return decryptedText.toString();
+}
+
+export default {
+  encrypt,
+  decrypt,
+};

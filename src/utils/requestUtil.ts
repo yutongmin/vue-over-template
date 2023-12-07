@@ -15,7 +15,7 @@ import {
   serviceCodeMsg,
 } from "@/utils";
 import { ReqParams, RspParams } from "@/types";
-import { useUserStore } from "@/plugins/stores/store/user";
+import { useUserStore } from "@/stores/store/user";
 
 /**
  * 默认请求参数
@@ -60,7 +60,7 @@ service.interceptors.response.use(
     return response;
   },
   (error) => {
-    let response: RspParams;
+    let response: RspParams = {};
     let userStore = useUserStore();
     // console.log('error1', error)
     /**
@@ -124,7 +124,7 @@ async function request<T>(
     options.url = options.micservice + url;
     let result = await service(options);
     return result.data;
-  } catch (error) {
+  } catch (error:any) {
     notificationMsg(
       remindType.error,
       error ? error.msg : remindMessage.netError

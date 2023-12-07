@@ -6,7 +6,6 @@
  */
 import { request } from "@/utils";
 import { RspParams } from "@/types";
-import { DictInfo } from "@/types/dict";
 
 enum Url {
   DICT_URL = "/dicts/by_code",
