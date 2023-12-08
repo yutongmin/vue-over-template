@@ -23,7 +23,7 @@ async function decrypt(ciphertext: string): Promise<string> {
   return decryptedText.toString();
 }
 
-export default {
+export {
   encrypt,
   decrypt,
 };

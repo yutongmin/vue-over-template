@@ -59,6 +59,12 @@ const config = {
    * pathname + hash 
    */
   newHref: "",
+  /**
+   * 版权所有
+   */
+  copyright: '安徽省民政厅',
+  support: "安徽晶奇网络科技股份有限公司",
+  tel: "0551-65350880、65350890、65350879"
 };
 
 window.config = config;

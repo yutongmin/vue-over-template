@@ -60,6 +60,7 @@ service.interceptors.response.use(
     return response;
   },
   (error) => {
+    // console.log('error', error)
     let response: RspParams = {};
     let userStore = useUserStore();
     // console.log('error1', error)
@@ -85,7 +86,9 @@ service.interceptors.response.use(
         // 只有在401的时候 才退出登录
         userStore.unauthorized();
         // TODO 登录过期时会跳转到sso登录页
-        // window.location.href = window.location.origin + window.config.newHref
+        if(location.hash != '#/' && location.hash.indexOf("/login") < 0 ){
+          window.location.href = window.location.origin + window.config.newHref
+        }
       } else if (error.response.status === serviceCode.error) {
         response = {
           status: serviceCode.error,

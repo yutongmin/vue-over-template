@@ -11,3 +11,12 @@
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
+<script type="module">
+  const publicpath = import.meta.env.APP_PUBLIC_PATH;
+  // 创建一个script标签
+  var script = document.createElement("script");
+  // 设置script标签的src属性
+  script.src = `${publicpath}/config/config.js`;
+  // 将script标签添加到HTML文档中
+  document.head.appendChild(script);
+</script>

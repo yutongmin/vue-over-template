@@ -34,16 +34,10 @@ class Area implements IArea {
       //   contain_self: true, //是否包含自己层级
       // },
     };
-    let res = await request<RspParams>(
+    return await request<RspParams>(
       `${Url.INIT_AREA_LIST_URL}/${id}`,
       options
     );
-    let list = [];
-    if (res.succeed) {
-      list = res.data;
-    }
-
-    return list;
   }
   /**
    * 根据Id获取本级区划
@@ -53,13 +47,7 @@ class Area implements IArea {
     const options = {
       method: "get",
     };
-    let res = await request<RspParams>(`${Url.INIT_AREA_URL}/${id}`, options);
-    let area = [];
-    if (res.succeed) {
-      area = res.data;
-    }
-
-    return area;
+    return await request<RspParams>(`${Url.INIT_AREA_URL}/${id}`, options);
   }
 }
 
