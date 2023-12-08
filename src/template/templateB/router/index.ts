@@ -4,6 +4,7 @@ import Home from '@/template/templateB/views/Home.vue';
 import Index from '@/template/templateB/views/Index.vue';
 
 const routes: Array<RouteRecordRaw> = [
+  { path: '/templateB/', component: Login },
   { path: '/templateB/login', component: Login },
   { path: '/templateB/home', component: Home },
   { path: '/templateB/index', component: Index },
